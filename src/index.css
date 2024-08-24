@@ -48,7 +48,7 @@ body {
 
 .main {
   margin-top: 2.4rem;
-  height: calc(100vh - 7.2rem - 3 * 2.4rem);
+  height: fit-content;
   display: flex;
   gap: 2.4rem;
   justify-content: center;
@@ -56,7 +56,11 @@ body {
 
 .box {
   width: 42rem;
-  max-width: 42rem;
+  height: fit-content;
+  margin-bottom: 10px;
+  min-height: 50px;
+  /* min-height: 50px;
+  max-height: fit-content; */
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
   /* overflow: scroll; */
