@@ -2,8 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-const SearchBar = () => {
-    const [query, setQuery] = useState("");
+const SearchBar = ({query, setQuery}) => {
     return <div className="search-bar">
     <input
     className="search"

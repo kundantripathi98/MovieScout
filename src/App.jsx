@@ -82,10 +82,11 @@ async function fetchData() {
 
 
 export default function App() {
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const KEY = "8de227e4";
-  let query = "breaking";
+  let temquery = "breaking";
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -94,7 +95,7 @@ export default function App() {
       
       try {
         setIsLoading(true)
-        let res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
+        let res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${temquery}`);
         let data = await res.json();
         setMovies(data.Search);
 
@@ -125,7 +126,7 @@ export default function App() {
     return (
       <>
       <Navbar>
-        <SearchBar/>
+        <SearchBar query={query} setQuery={setQuery}/>
         <NumResults movies={movies}/>
       </Navbar>
 
