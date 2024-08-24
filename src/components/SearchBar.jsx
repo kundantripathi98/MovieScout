@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
 const SearchBar = ({query, setQuery}) => {
     return <div className="search-bar">
     <input
@@ -12,9 +8,6 @@ const SearchBar = ({query, setQuery}) => {
     onChange={(e) => setQuery(e.target.value)}
   />
 
-  <button >
-    <FontAwesomeIcon icon={faMagnifyingGlass} />
-    </button>
     </div>
 }
 
