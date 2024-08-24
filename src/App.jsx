@@ -9,6 +9,7 @@ import MovieList from "./components/MovieList";
 import StarRating from "./components/StarRating";
 import Loader from "./components/Loader";
 import ErrorComponent from "./components/ErrorComponent";
+import SearchBar from "./components/SearchBar";
 
 const tempMovieData = [
   {
@@ -124,6 +125,7 @@ export default function App() {
     return (
       <>
       <Navbar>
+        <SearchBar/>
         <NumResults movies={movies}/>
       </Navbar>
 
