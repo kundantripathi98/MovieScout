@@ -86,7 +86,6 @@ export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const KEY = "8de227e4";
-  let temquery = "breaking";
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -94,8 +93,9 @@ export default function App() {
     async function fetchData() {
       
       try {
+        setError("")
         setIsLoading(true)
-        let res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${temquery}`);
+        let res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
         let data = await res.json();
         setMovies(data.Search);
 
@@ -107,9 +107,7 @@ export default function App() {
         if (data.Response === "False") {
           setMovies([]);
           throw new Error("Movie Not Found, Try again or check spelling ");
-          }
-
-          
+        }    
       }
       catch (err) {
         setError(err.message);
@@ -117,10 +115,15 @@ export default function App() {
       finally{
         setIsLoading(false);
       }
+    }
 
+    if(query.length < 3){
+          setMovies([]);
+          setError('');
+          return;
     }
     fetchData()
-  }, []);
+  }, [query]);
 
 
     return (
