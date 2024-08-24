@@ -85,6 +85,7 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const KEY = "8de227e4";
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -125,6 +126,9 @@ export default function App() {
     fetchData()
   }, [query]);
 
+  function handleSelection(movie) {
+    setSelectedFriend(selected => selected?.imdbID === movie.imdbID ? null : movie);
+  }
 
     return (
       <>
@@ -137,7 +141,7 @@ export default function App() {
         <Box>
           {query.length < 3 && <p className="loader">Your movies will show here!</p>}
           {isLoading && <Loader/>}
-          {!isLoading && !error && <MovieList movies={movies}/>}
+          {!isLoading && !error && <MovieList movies={movies} selectedMovie={selectedMovie} onSelect={handleSelection}/>}
           {error && <ErrorComponent error={error}/>}
         </Box>
 

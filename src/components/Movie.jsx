@@ -1,5 +1,9 @@
-const Movie = ({movie}) => {
-    return <li key={movie.imdbID}>
+const Movie = ({movie, selectedMovie, onSelect}) => {
+  function handleClick(){
+    console.log(movie.imdbID);
+  }
+
+    return <li key={movie.imdbID} onClick={handleClick}>
     <img src={movie.Poster} alt={`${movie.Title} poster`} />
     <h3>{movie.Title}</h3>
     <div>

@@ -174,17 +174,25 @@ body {
   column-gap: 2.4rem;
   font-size: 1.6rem;
   align-items: center;
-
   padding: 1.6rem 3.2rem;
   border-bottom: 1px solid var(--color-background-100);
 }
 
-.list.list-movies li {
+/* .list .list-movies li {
   cursor: pointer;
   transition: all 0.3s;
 }
 
-.list.list-movies li:hover {
+.list .list-movies li:hover {
+  background-color: var(--color-background-100);
+} */
+.list li {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+
+.list li:hover {
   background-color: var(--color-background-100);
 }
 
