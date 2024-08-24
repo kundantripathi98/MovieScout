@@ -135,6 +135,7 @@ export default function App() {
 
       <Main>
         <Box>
+          {query.length < 3 && <p className="loader">Your movies will show here!</p>}
           {isLoading && <Loader/>}
           {!isLoading && !error && <MovieList movies={movies}/>}
           {error && <ErrorComponent error={error}/>}
