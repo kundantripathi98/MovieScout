@@ -178,21 +178,12 @@ body {
   border-bottom: 1px solid var(--color-background-100);
 }
 
-/* .list .list-movies li {
+ .list-movies li {
   cursor: pointer;
   transition: all 0.3s;
 }
 
-.list .list-movies li:hover {
-  background-color: var(--color-background-100);
-} */
-.list li {
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-
-.list li:hover {
+ .list-movies li:hover {
   background-color: var(--color-background-100);
 }
 
@@ -312,7 +303,7 @@ body {
 .rating {
   background-color: var(--color-background-100);
   border-radius: 0.9rem;
-  padding: 2rem 2.4rem;
+  padding: 2rem 10px;
   margin-bottom: 0.8rem;
   font-weight: 600;
   display: flex;

@@ -1,6 +1,6 @@
 const Movie = ({movie, selectedMovie, onSelect}) => {
   function handleClick(){
-    console.log(movie.imdbID);
+    onSelect(movie);
   }
 
     return <li key={movie.imdbID} onClick={handleClick}>

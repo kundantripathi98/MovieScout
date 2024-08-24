@@ -10,6 +10,7 @@ import StarRating from "./components/StarRating";
 import Loader from "./components/Loader";
 import ErrorComponent from "./components/ErrorComponent";
 import SearchBar from "./components/SearchBar";
+import MovieDetails from "./components/MovieDetails";
 
 const tempMovieData = [
   {
@@ -58,37 +59,17 @@ const tempWatchedData = [
   },
 ];
 
-
-async function fetchData() {
-  const KEY = "8de227e4";
-
-  try {
-    let res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=spiderman`);
-    let data = await res.json();
-    
-    if (data.Search) {
-      setMovies(data.Search);
-    } else {
-      console.log("No movies found");
-    }
-
-    console.log(data.Search);
-  } catch (error) {
-    console.log("Error fetching data:", error);
-  }
-}
-
-
-
-
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const KEY = "8de227e4";
+  const [isSame, setIsSame] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  console.log(selectedMovie);
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -127,7 +108,11 @@ export default function App() {
   }, [query]);
 
   function handleSelection(movie) {
-    setSelectedFriend(selected => selected?.imdbID === movie.imdbID ? null : movie);
+    setSelectedMovie(selected => selected?.imdbID === movie.imdbID ? null : movie);
+  }
+
+  function handleBackBtn(){
+    setSelectedMovie(null);
   }
 
     return (
@@ -146,12 +131,13 @@ export default function App() {
         </Box>
 
         <Box>
-          <Summary watched={watched}/>
+          {selectedMovie ? <MovieDetails KEY={KEY} selectedMovie={selectedMovie} onBackBtn={handleBackBtn} isLoading={isLoading} setWatched={setWatched}/> :
+          <>
+            <Summary watched={watched}/>
 
-          <WatchList watched={watched}/>
-
-          {/* <StarRating maxRating={5} color={"yellow"} size={"25px"} className="test" messages={["Terrible", "Bad", "Okay", "Good", "Amazing!"]} />
-          <StarRating maxRating={5} color={"red"} size={"35px"} defaultRating={3}/> */}
+            <WatchList watched={watched}/>
+          </>
+          }
         </Box>
       </Main>
       </>
