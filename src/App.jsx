@@ -130,7 +130,7 @@ export default function App() {
         </Box>
 
         <Box>
-          {selectedMovie ? <MovieDetails KEY={KEY} selectedMovie={selectedMovie} onBackBtn={handleBackBtn} isLoading={isLoading} setWatched={setWatched}/> :
+          {selectedMovie ? <MovieDetails KEY={KEY} selectedMovie={selectedMovie} onBackBtn={handleBackBtn} isLoading={isLoading} watched={watched} setWatched={setWatched}/> :
           <>
             <Summary watched={watched}/>
 

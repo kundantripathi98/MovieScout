@@ -7,8 +7,9 @@ import Loader from "./Loader";
 const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWatched}) => {
     const [movieDetail, setMovieDetail] = useState({});
     const [rating, setRating] = useState(null);
-    let isWatched = watched?.map(movie => movie.imdbID)
-    console.log(watched);
+    let isWatched = watched?.map(movie => movie.imdbID).includes(selectedMovie.imdbID)
+    console.log(isWatched);
+    
     
 
     useEffect(()=>{
@@ -68,8 +69,8 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
 
         <section>
             <div className="rating">
-            <StarRating color={"yellow"} size={"25px"} rating={rating} setRating={setRating}/>
-            {rating && <button className="btn-add" onClick={handleClick}>Add to List</button>}
+            <div className="starRating-box"><StarRating color={"yellow"} size={"25px"} rating={rating} setRating={setRating}/>
+            {rating && <button className="btn-add" onClick={handleClick}>Add to List</button>}</div>
                 {/* {rating === 0 ? <div><StarRating color={"yellow"} size={"25px"} rating={rating} setRating={setRating}/>
                 {rating && <button className="btn-add" onClick={handleClick}>Add to List</button>}</div> : <p>You gave this movie a rating of ⭐{rating}.</p>} */}
             </div>

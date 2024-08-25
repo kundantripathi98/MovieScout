@@ -311,6 +311,12 @@ body {
   gap: 2.4rem;
 }
 
+.starRating-box{
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
 .btn-add {
   background-color: var(--color-primary);
   color: var(--color-text);
