@@ -69,10 +69,11 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
 
         <section>
             <div className="rating">
-            <div className="starRating-box"><StarRating color={"yellow"} size={"25px"} rating={rating} setRating={setRating}/>
-            {rating && <button className="btn-add" onClick={handleClick}>Add to List</button>}</div>
-                {/* {rating === 0 ? <div><StarRating color={"yellow"} size={"25px"} rating={rating} setRating={setRating}/>
-                {rating && <button className="btn-add" onClick={handleClick}>Add to List</button>}</div> : <p>You gave this movie a rating of ⭐{rating}.</p>} */}
+                {isWatched ? <p>You gave this movie a rating of ⭐{rating}.</p>
+                 :
+                 <div className="starRating-box"><StarRating color={"yellow"} size={"25px"} rating={rating} setRating={setRating}/>
+                {rating && <button className="btn-add" onClick={handleClick}>Add to List</button>}</div>
+                 }
             </div>
             <p><em>{movieDetail.Plot}</em></p>
             <p>Starring:- {movieDetail.Actors}</p>
