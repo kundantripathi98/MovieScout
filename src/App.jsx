@@ -121,9 +121,18 @@ export default function App() {
   }
 
   function handleBackBtn(){
-    // document.title = "MovieScout | Start your Movie journey";
     setSelectedMovie(null);
   }
+
+  useEffect(()=>{
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape"){
+        if(selectedMovie){
+          handleBackBtn();  
+        }  
+      }
+    });
+  }, []);
 
   function handleWatchedDeletion(id){
     setWatched(watched => watched.filter(movie => movie.imdbID !== id));
