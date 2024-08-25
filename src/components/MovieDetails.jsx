@@ -46,6 +46,23 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
         };
     }, [selectedMovie]);
 
+    useEffect(()=>{
+        function handleKeyDown(e) {
+            if (e.code === "Escape") {
+                console.log("df");
+                onBackBtn();
+            }
+        }
+
+        if(selectedMovie){
+            document.addEventListener("keydown", handleKeyDown);
+        }
+
+        return ()=>{
+            document.removeEventListener("keydown", handleKeyDown);
+        }
+      }, [onBackBtn]);
+
     function handleClick(){
         
         let newWatchedMovie = {
