@@ -68,7 +68,6 @@ export default function App() {
   const [isSame, setIsSame] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  console.log(selectedMovie);
   
 
   useEffect(() => {
@@ -126,7 +125,7 @@ export default function App() {
         <Box>
           {query.length < 3 && <p className="loader">Your movies will show here!</p>}
           {isLoading && <Loader/>}
-          {!isLoading && !error && <MovieList movies={movies} selectedMovie={selectedMovie} onSelect={handleSelection}/>}
+          {!isLoading && !error && <MovieList movies={movies} selectedMovie={selectedMovie} watched={watched} onSelect={handleSelection}/>}
           {error && <ErrorComponent error={error}/>}
         </Box>
 

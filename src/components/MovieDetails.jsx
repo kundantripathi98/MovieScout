@@ -7,6 +7,9 @@ import Loader from "./Loader";
 const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWatched}) => {
     const [movieDetail, setMovieDetail] = useState({});
     const [rating, setRating] = useState(null);
+    let isWatched = watched?.map(movie => movie.imdbID)
+    console.log(watched);
+    
 
     useEffect(()=>{
        async function fetchData(){
