@@ -71,12 +71,14 @@ export default function App() {
   
 
   useEffect(() => {
-    async function fetchData() {
-      
+    let controller = new AbortController();
+    const signal = controller.signal;
+
+    async function fetchData() { 
       try {
         setError("")
         setIsLoading(true)
-        let res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
+        let res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {signal});
         let data = await res.json();
         setMovies(data.Search);
 
@@ -87,11 +89,14 @@ export default function App() {
 
         if (data.Response === "False") {
           setMovies([]);
+          setError("");
           throw new Error("Movie Not Found, Try again or check spelling ");
-        }    
+        } 
       }
       catch (err) {
-        setError(err.message);
+        if(err.name !== "AbortError"){
+          setError(err.message);
+        }
       }
       finally{
         setIsLoading(false);
@@ -103,7 +108,12 @@ export default function App() {
           setError('');
           return;
     }
+
     fetchData()
+
+    return ()=>{
+      controller.abort();
+    }
   }, [query]);
 
   function handleSelection(movie) {
@@ -111,6 +121,7 @@ export default function App() {
   }
 
   function handleBackBtn(){
+    // document.title = "MovieScout | Start your Movie journey";
     setSelectedMovie(null);
   }
 
