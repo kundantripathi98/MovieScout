@@ -311,10 +311,9 @@ body {
   gap: 2.4rem;
 }
 
-.starRating-box{
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
+.rating-para{
+  width: 80%;
+  margin: auto;
 }
 
 .btn-add {

@@ -7,10 +7,8 @@ import Loader from "./Loader";
 const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWatched}) => {
     const [movieDetail, setMovieDetail] = useState({});
     const [rating, setRating] = useState(null);
-    let isWatched = watched?.map(movie => movie.imdbID).includes(selectedMovie.imdbID)
-    console.log(isWatched);
-    
-    
+    let isWatched = watched?.map(movie => movie.imdbID).includes(selectedMovie.imdbID);
+    let watchedUserRating = watched.find(movie => movie.imdbID === selectedMovie.imdbID)?.userRating;
 
     useEffect(()=>{
        async function fetchData(){
@@ -69,10 +67,10 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
 
         <section>
             <div className="rating">
-                {isWatched ? <p>You gave this movie a rating of ⭐{rating}.</p>
+                {isWatched ? <p className="rating-para">You gave this movie a rating of 🌟 {watchedUserRating}.</p>
                  :
-                 <div className="starRating-box"><StarRating color={"yellow"} size={"25px"} rating={rating} setRating={setRating}/>
-                {rating && <button className="btn-add" onClick={handleClick}>Add to List</button>}</div>
+                 <><StarRating color={"yellow"} size={"25px"} rating={rating} setRating={setRating}/>
+                {rating && <button className="btn-add" onClick={handleClick}>Add to List</button>}</>
                  }
             </div>
             <p><em>{movieDetail.Plot}</em></p>
