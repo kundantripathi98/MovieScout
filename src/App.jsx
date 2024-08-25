@@ -69,7 +69,6 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   
-
   useEffect(() => {
     let controller = new AbortController();
     const signal = controller.signal;
