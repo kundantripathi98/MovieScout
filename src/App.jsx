@@ -109,6 +109,7 @@ export default function App() {
           return;
     }
 
+    handleBackBtn();
     fetchData()
 
     return ()=>{
