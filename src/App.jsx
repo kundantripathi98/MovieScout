@@ -62,7 +62,10 @@ const tempWatchedData = [
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(()=>{
+      const storedVal = localStorage.getItem("watched");
+      return JSON.parse(storedVal);
+  });
   const [selectedMovie, setSelectedMovie] = useState(null);
   const KEY = "8de227e4";
   const [isSame, setIsSame] = useState(false);
@@ -115,6 +118,10 @@ export default function App() {
       controller.abort();
     }
   }, [query]);
+
+  useEffect(()=>{
+    localStorage.setItem("watched", JSON.stringify(watched));
+  },[watched]);
 
   function handleSelection(movie) {
     setSelectedMovie(selected => selected?.imdbID === movie.imdbID ? null : movie);

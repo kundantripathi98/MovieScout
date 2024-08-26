@@ -63,9 +63,10 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
         }
       }, [onBackBtn]);
 
+
     function handleClick(){
         
-        let newWatchedMovie = {
+       let newWatchedMovie = {
             imdbID: movieDetail.imdbID,
             Title: movieDetail.Title,
             Year: movieDetail.Year,
@@ -75,15 +76,9 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
             userRating: rating,
           }
         
-        setWatched(watchlist => {
-            onBackBtn();
-            if(watchlist.some(movie => movie.imdbID === newWatchedMovie.imdbID)){
-                return watchlist;
-            }
-            else{
-                return [...watchlist, newWatchedMovie];
-            }
-        });
+          onBackBtn();
+        setWatched(watchlist => [...watchlist, newWatchedMovie]);
+
     }
 
     return <div className="details">
