@@ -4,11 +4,20 @@ const SearchBar = ({query, setQuery}) => {
 
   let inputElm = useRef(null);
     useEffect(()=>{
-      document.addEventListener("keydown", (e)=>{
+      let clickEvent = () => {
+        if()
+
         if(e.code === "Enter"){
           inputElm.current.focus();
+          setQuery("");
         };
-      });
+      }
+
+      document.addEventListener("keydown", clickEvent);
+
+      return () => {
+        document.removeEventListener("keydown", clickEvent);
+      }
     }, []);
 
     return <div className="search-bar">
