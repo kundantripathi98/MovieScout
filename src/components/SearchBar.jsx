@@ -4,8 +4,8 @@ const SearchBar = ({query, setQuery}) => {
 
   let inputElm = useRef(null);
     useEffect(()=>{
-      let clickEvent = () => {
-        if()
+      let clickEvent = (e) => {
+        if(document.activeElement === inputElm.current) return;
 
         if(e.code === "Enter"){
           inputElm.current.focus();
