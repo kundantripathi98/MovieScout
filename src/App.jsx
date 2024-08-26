@@ -123,11 +123,7 @@ export default function App() {
     localStorage.setItem("watched", JSON.stringify(watched));
   },[watched]);
 
-  useEffect(()=>{
-    let el = document.querySelector(".search");
-    console.log(el);
-    el.focus()
-  }, []);
+
 
   function handleSelection(movie) {
     setSelectedMovie(selected => selected?.imdbID === movie.imdbID ? null : movie);
