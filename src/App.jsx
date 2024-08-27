@@ -71,7 +71,7 @@ export default function App() {
   const KEY = "8de227e4";
 
   const {movies, isLoading, error} = useMovies(query, handleBackBtn);
-  const {watched, setWatched} = useLocalStorageState();
+  const [watched, setWatched] = useLocalStorageState([], "watched");
 
   // useEffect(()=>{
   //   localStorage.setItem("watched", JSON.stringify(watched));
