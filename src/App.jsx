@@ -68,9 +68,7 @@ export default function App() {
   });
   const [selectedMovie, setSelectedMovie] = useState(null);
   const KEY = "8de227e4";
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState("");
-  
+
   // useEffect(() => {
   //   let controller = new AbortController();
   //   const signal = controller.signal;
