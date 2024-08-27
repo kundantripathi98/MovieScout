@@ -12,6 +12,7 @@ import ErrorComponent from "./components/ErrorComponent";
 import SearchBar from "./components/SearchBar";
 import MovieDetails from "./components/MovieDetails";
 import { useMovies } from "./useMovies";
+import { useLocalStorageState } from "./useLocalStorageState";
 
 const tempMovieData = [
   {
@@ -62,18 +63,19 @@ const tempWatchedData = [
 
 export default function App() {
   const [query, setQuery] = useState("");
-  const [watched, setWatched] = useState(()=>{
-      const storedVal = localStorage.getItem("watched");
-      return JSON.parse(storedVal);
-  });
+  // const [watched, setWatched] = useState(()=>{
+  //     const storedVal = localStorage.getItem("watched");
+  //     return JSON.parse(storedVal);
+  // });
   const [selectedMovie, setSelectedMovie] = useState(null);
   const KEY = "8de227e4";
 
   const {movies, isLoading, error} = useMovies(query, handleBackBtn);
+  const {watched, setWatched} = useLocalStorageState();
 
-  useEffect(()=>{
-    localStorage.setItem("watched", JSON.stringify(watched));
-  },[watched]);
+  // useEffect(()=>{
+  //   localStorage.setItem("watched", JSON.stringify(watched));
+  // },[watched]);
 
 
 
