@@ -69,53 +69,6 @@ export default function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const KEY = "8de227e4";
 
-  // useEffect(() => {
-  //   let controller = new AbortController();
-  //   const signal = controller.signal;
-
-  //   async function fetchData() { 
-  //     try {
-  //       setError("")
-  //       setIsLoading(true)
-  //       let res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {signal});
-  //       let data = await res.json();
-  //       setMovies(data.Search);
-
-  //       if(!res.ok){
-  //         setMovies([]);
-  //         throw new Error("Failed to load");
-  //       }
-
-  //       if (data.Response === "False") {
-  //         setMovies([]);
-  //         setError("");
-  //         throw new Error("Movie Not Found, Try again or check spelling ");
-  //       } 
-  //     }
-  //     catch (err) {
-  //       if(err.name !== "AbortError"){
-  //         setError(err.message);
-  //       }
-  //     }
-  //     finally{
-  //       setIsLoading(false);
-  //     }
-  //   }
-
-  //   if(query.length < 3){
-  //         setMovies([]);
-  //         setError('');
-  //         return;
-  //   }
-
-  //   handleBackBtn();
-  //   fetchData()
-
-  //   return ()=>{
-  //     controller.abort();
-  //   }
-  // }, [query]);
-
   const {movies, isLoading, error} = useMovies(query, handleBackBtn);
 
   useEffect(()=>{
