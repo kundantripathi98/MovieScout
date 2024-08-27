@@ -18,7 +18,7 @@ const SearchBar = ({query, setQuery}) => {
       return () => {
         document.removeEventListener("keydown", clickEvent);
       }
-    }, []);
+    }, [setQuery]);
 
     return <div className="search-bar">
     <input
