@@ -9,7 +9,6 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
     const [rating, setRating] = useState(null);
     let isWatched = watched?.map(movie => movie.imdbID).includes(selectedMovie.imdbID);
     let watchedUserRating = watched.find(movie => movie.imdbID === selectedMovie.imdbID)?.userRating;
-    let countRef = useRef(0);
 
     useEffect(()=>{
        async function fetchData(){
@@ -50,7 +49,6 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
     useEffect(()=>{
         function handleKeyDown(e) {
             if (e.code === "Escape") {
-                console.log("df");
                 onBackBtn();
             }
         }
@@ -64,12 +62,6 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
         }
       }, [onBackBtn]);
 
-    useEffect(()=>{
-        if(rating){
-            countRef++;
-        }
-    },[rating]);
-
 
     function handleClick(){
         
@@ -81,7 +73,6 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
             runtime: movieDetail.Runtime.split(" ").slice(0,1),
             imdbRating: movieDetail.imdbRating,
             userRating: rating,
-            countRatingDecision : countRef.current
           }
         
           onBackBtn();
