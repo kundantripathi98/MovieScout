@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
+import { useKey } from "../useKey";
 
 const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWatched}) => {
     const [movieDetail, setMovieDetail] = useState({});
@@ -46,21 +47,24 @@ const MovieDetails = ({KEY, selectedMovie, onBackBtn, isLoading, watched, setWat
         };
     }, [selectedMovie]);
 
-    useEffect(()=>{
-        function handleKeyDown(e) {
-            if (e.code === "Escape") {
-                onBackBtn();
-            }
-        }
+    // useEffect(()=>{
+        
 
-        if(selectedMovie){
-            document.addEventListener("keydown", handleKeyDown);
-        }
+    //     if(selectedMovie){
+    //         document.addEventListener("keydown", handleKeyDown);
+    //     }
 
-        return ()=>{
-            document.removeEventListener("keydown", handleKeyDown);
+    //     return ()=>{
+    //         document.removeEventListener("keydown", handleKeyDown);
+    //     }
+    //   }, [onBackBtn]);
+    useKey(handleKeyDown, selectedMovie, selectedMovie);
+
+    function handleKeyDown(e) {
+        if (e.code === "Escape") {
+            onBackBtn();
         }
-      }, [onBackBtn]);
+    }
 
 
     function handleClick(){

@@ -1,25 +1,27 @@
 import { useEffect, useRef } from "react";
+import { useKey } from "../useKey";
 
 const SearchBar = ({query, setQuery}) => {
 
   let inputElm = useRef(null);
+  let clickEvent = (e) => {
+    if(document.activeElement === inputElm.current) return;
 
-    useEffect(()=>{
-      let clickEvent = (e) => {
-        if(document.activeElement === inputElm.current) return;
+    if(e.code === "Enter"){
+      inputElm.current.focus();
+      setQuery("");
+    };
+  }
 
-        if(e.code === "Enter"){
-          inputElm.current.focus();
-          setQuery("");
-        };
-      }
+    // useEffect(()=>{
+    //   document.addEventListener("keydown", clickEvent);
 
-      document.addEventListener("keydown", clickEvent);
+    //   return () => {
+    //     document.removeEventListener("keydown", clickEvent);
+    //   }
+    // }, [setQuery]);
+    useKey(clickEvent, setQuery);
 
-      return () => {
-        document.removeEventListener("keydown", clickEvent);
-      }
-    }, [setQuery]);
 
     return <div className="search-bar">
     <input
