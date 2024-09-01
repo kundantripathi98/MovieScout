@@ -67,6 +67,7 @@ export default function App() {
   //     const storedVal = localStorage.getItem("watched");
   //     return JSON.parse(storedVal);
   // });
+  
   const [selectedMovie, setSelectedMovie] = useState(null);
   const KEY = "8de227e4";
 
@@ -76,8 +77,6 @@ export default function App() {
   // useEffect(()=>{
   //   localStorage.setItem("watched", JSON.stringify(watched));
   // },[watched]);
-
-
 
   function handleSelection(movie) {
     setSelectedMovie(selected => selected?.imdbID === movie.imdbID ? null : movie);
